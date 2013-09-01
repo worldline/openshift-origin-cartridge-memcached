@@ -12,13 +12,13 @@ License: ASL 2.0
 Vendor: Memcached
 Categories:
   - service
-  - cache
+  - database
   - embedded
 Website: http://www.memcached.org
 Help-Topics:
   - "Building with Memcached" : https://www.openshift.com/developers/memcached
 Cart-Data:
-  - Key: "port"
+  - Key: port
     Type: cart_data
     Description: "Memcached port"
   - Key: connection_url
@@ -26,13 +26,13 @@ Cart-Data:
     Description: "Memcached connection URL"
 Suggests:
 Provides:
+  - memcached
   - memcached-1.4
-  - "memcached"
-  - "memcached(version) = 1.4"
+  - memcached(version) = 1.4
   - memcached-basic-mode
 Publishes:
   publish-nosql-db-connection-info:
-    Type: "ENV:NET_TCP:nosqldb:connection-info"
+    Type: "ENV:NET_TCP:db:connection-info"
 Scaling:
   Min: 1
   Max: 1
