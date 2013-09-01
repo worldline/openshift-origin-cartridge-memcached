@@ -7,7 +7,7 @@ Description: "Memcached is an in-memory key-value store for small chunks of arbi
 Version: '1.4'
 Versions: [1.4]
 Cartridge-Version: 0.2.0
-Cartridge-Vendor: redhat
+Cartridge-Vendor: brianredbeard
 License: ASL 2.0
 Vendor: Memcached
 Categories:
