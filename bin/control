@@ -16,12 +16,23 @@ function isrunning() {
      return 1
 }
 
+function _is_memcached_responding()
+{
+    exec 99<>/dev/tcp/$OPENSHIFT_MEMCACHED_HOST/$OPENSHIFT_MEMCACHED_PORT || return 1
+    echo version >&99
+    read -t 0.1 a b <&99
+    exec 99<&-
+    test "$a" == "VERSION"
+}
+
 function _wait_for_memcached_to_startup() {
-    i=0
-    while ( (! echo -ne "version\nquit\n" | nc $OPENSHIFT_MEMCACHED_HOST $OPENSHIFT_MEMCACHED_PORT|grep -q VERSION > /dev/null 2>&1) ||  \
-            [ ! -f ${OPENSHIFT_MEMCACHED_DIR}/pid/memcached.pid ]) && [ $i -lt 20 ]; do
+    for ((i=0; i<20; i++)); do
+        if [ -f ${OPENSHIFT_MEMCACHED_DIR}/pid/memcached.pid ]; then
+            if _is_memcached_responding; then
+                return
+            fi
+        fi
         sleep 1
-        i=$(($i + 1))
     done
 }
 
