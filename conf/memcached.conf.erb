@@ -1,3 +1,8 @@
 MAXCONN="1024"
 CACHESIZE="64"
 OPTIONS=""
+
+# Set USE_SASL to 1 to accept authenticated connections only.
+# It will append '-S' to OPTIONS below.
+# More info on memcached's SASL implmentation on https://code.google.com/p/memcached/wiki/SASLHowto
+USE_SASL=0
