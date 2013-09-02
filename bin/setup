@@ -13,14 +13,16 @@ generate_password > env/OPENSHIFT_MEMCACHED_PASSWORD
 
 saslpasswd2 -p -a memcached -c "$(< env/OPENSHIFT_MEMCACHED_USERNAME)" -f $OPENSHIFT_DATA_DIR/.memcached/sasldb < env/OPENSHIFT_MEMCACHED_PASSWORD
 
+echo "memcached://$(< env/OPENSHIFT_MEMCACHED_USERNAME):$(< env/OPENSHIFT_MEMCACHED_PASSWORD)@$OPENSHIFT_MEMCACHED_HOST:$OPENSHIFT_MEMCACHED_PORT/" > env/OPENSHIFT_MEMCACHED_URL
+
 client_result "Use the following env vars on your application to connect to memcached:"
 client_result " OPENSHIFT_MEMCACHED_HOST: $OPENSHIFT_MEMCACHED_HOST"
 client_result " OPENSHIFT_MEMCACHED_PORT: $OPENSHIFT_MEMCACHED_PORT"
-client_result " OPENSHIFT_MEMCACHED_URL:  $OPENSHIFT_MEMCACHED_URL"
+client_result " OPENSHIFT_MEMCACHED_URL:  $(< env/OPENSHIFT_MEMCACHED_URL)"
 client_result ""
 client_result "To activate authentication, ssh into your memcached gear and set USE_SASL=1 in memcached/conf/memcached.conf"
 client_result "Tip: $ rhc app show -a [APP] --gears  <== list ssh URLs for all your app gears"
 client_result ""
 client_result "Credentials are stored on following env vars:"
-client_result " OPENSHIFT_MEMCACHED_USERNAME: $OPENSHIFT_MEMCACHED_USERNAME"
-client_result " OPENSHIFT_MEMCACHED_PASSWORD: $OPENSHIFT_MEMCACHED_PASSWORD"
+client_result " OPENSHIFT_MEMCACHED_USERNAME: $(< env/OPENSHIFT_MEMCACHED_USERNAME)"
+client_result " OPENSHIFT_MEMCACHED_PASSWORD: $(< env/OPENSHIFT_MEMCACHED_PASSWORD)"
