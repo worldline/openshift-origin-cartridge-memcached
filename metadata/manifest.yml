@@ -32,12 +32,12 @@ Provides:
   - memcached-basic-mode
 Publishes:
   publish-db-connection-info:
-    Type: "NET_TCP:db:connection-info"
+    Type: "ENV:NET_TCP:db:connection-info"
 Scaling:
   Min: 1
   Max: 1
 Endpoints:
-  - Private-IP-Name:   IP
+  - Private-IP-Name:   HOST
     Private-Port-Name: PORT
     Private-Port:      11211
     Public-Port-Name:  PROXY_PORT
