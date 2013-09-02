@@ -1,3 +1,8 @@
 #!/bin/bash -e
 
 mkdir -p $OPENSHIFT_MEMCACHED_DIR/{log,pid,socket,data,run}
+
+client_result "You can use the following env vars on your application to connect to memcached:"
+client_result "    OPENSHIFT_MEMCACHED_HOST"
+client_result "    OPENSHIFT_MEMCACHED_PORT"
+client_result "    OPENSHIFT_MEMCACHED_URL"
