@@ -28,11 +28,11 @@ Suggests:
 Provides:
   - memcached
   - memcached-1.4
-  - memcached(version) = 1.4
+  - "memcached(version) = 1.4"
   - memcached-basic-mode
 Publishes:
-  publish-db-connection-info:
-    Type: "ENV:NET_TCP:db:connection-info"
+  publish-nosql-db-connection-info:
+    Type: "ENV:nosqldb:connection-info"
 Scaling:
   Min: 1
   Max: 1
