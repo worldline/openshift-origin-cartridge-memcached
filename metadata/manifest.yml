@@ -32,7 +32,8 @@ Provides:
   - memcached-basic-mode
 Publishes:
   publish-nosql-db-connection-info:
-    Type: "ENV:nosqldb:connection-info"
+     Type: "NET_TCP:db:mysql"
+#    Type: "ENV:NET_TCP:nosqldb:connection-info"
 Scaling:
   Min: 1
   Max: 1
