@@ -17,7 +17,7 @@ cd memcached
 git checkout $version
 ./autogen.sh
 ./configure --enable-sasl
-make
+make -j 2
 
 mkdir -p $binaries
 
