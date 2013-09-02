@@ -4,7 +4,9 @@ source $OPENSHIFT_CARTRIDGE_SDK_BASH
 
 mkdir -p $OPENSHIFT_MEMCACHED_DIR/{log,pid,socket,data,run}
 
+echo $PWD/versions/1.4.15/bin > env/OPENSHIFT_MEMCACHED_PATH_ELEMENT
+
 client_result "You can use the following env vars on your application to connect to memcached:"
-client_result "    OPENSHIFT_MEMCACHED_HOST"
-client_result "    OPENSHIFT_MEMCACHED_PORT"
-client_result "    OPENSHIFT_MEMCACHED_URL"
+client_result "OPENSHIFT_MEMCACHED_HOST"
+client_result "OPENSHIFT_MEMCACHED_PORT"
+client_result "OPENSHIFT_MEMCACHED_URL"
