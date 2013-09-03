@@ -40,7 +40,7 @@ function start() {
     if ! isrunning
     then
         source $OPENSHIFT_MEMCACHED_DIR/conf/memcached.conf
-        if [ "$USE_SASL" == 1 ]; then
+        if [ "$DISABLE_SASL" != "1" ]; then
             export MEMCACHED_SASL_PWDB=$OPENSHIFT_DATA_DIR/.memcached/sasldb
             OPTIONS="$OPTIONS -S"
         fi

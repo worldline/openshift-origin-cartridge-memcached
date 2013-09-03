@@ -16,7 +16,7 @@ saslpasswd2 -p -a memcached -c "$(< env/OPENSHIFT_MEMCACHED_USERNAME)" -f $OPENS
 client_result "Use the following env vars on your application to connect to memcached:"
 client_result " OPENSHIFT_MEMCACHED_HOST, OPENSHIFT_MEMCACHED_PORT and OPENSHIFT_MEMCACHED_URL"
 client_result " "
-client_result "To activate authentication, ssh into your memcached gear and set USE_SASL=1 in memcached/conf/memcached.conf"
+client_result "To disable authentication, ssh into your memcached gear and set DISABLE_SASL=1 in memcached/conf/memcached.conf"
 client_result "Tip: $ rhc app show -a [APP] --gears  <== list ssh URLs for all your app gears"
 client_result " "
 client_result "Credentials are stored on the following env vars:"
