@@ -44,7 +44,7 @@ function start() {
             export SASL_CONF_PATH=$OPENSHIFT_DATA_DIR/.memcached/sasldb
             OPTIONS="$OPTIONS -S"
         fi
-        memcached -d -p $OPENSHIFT_MEMCACHED_PORT -U 0 -l ${OPENSHIFT_MEMCACHED_HOST} -u `id -u`  -m $CACHESIZE -c $MAXCONN -P ${OPENSHIFT_MEMCACHED_DIR}/pid/memcached.pid $OPTIONS 2>&1
+        memcached -d -p $OPENSHIFT_MEMCACHED_PORT -U 0 -l ${OPENSHIFT_MEMCACHED_HOST} -u `id -u` -m $CACHESIZE -c $MAXCONN -P ${OPENSHIFT_MEMCACHED_DIR}/pid/memcached.pid $OPTIONS 2>&1
         _wait_for_memcached_to_startup
     else
         client_result "Memcached already running"
