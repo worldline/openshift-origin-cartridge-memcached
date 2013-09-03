@@ -2,23 +2,14 @@
 
 source $OPENSHIFT_CARTRIDGE_SDK_BASH
 
-mkdir -p $OPENSHIFT_MEMCACHED_DIR/{log,pid,socket,data,run}
+mkdir -p $OPENSHIFT_MEMCACHED_DIR/{logs,pid}
 
-echo $PWD/versions/1.4.15/bin > env/OPENSHIFT_MEMCACHED_PATH_ELEMENT
+version=1.4.15
 
-# setup sasl
-mkdir -p $OPENSHIFT_DATA_DIR/.memcached
-generate_username > env/OPENSHIFT_MEMCACHED_USERNAME
-generate_password > env/OPENSHIFT_MEMCACHED_PASSWORD
+case "$1" in
+	-v|--version)
+	version="$2"
+esac
 
-saslpasswd2 -p -a memcached -c "$(< env/OPENSHIFT_MEMCACHED_USERNAME)" -f $OPENSHIFT_DATA_DIR/.memcached/sasldb < env/OPENSHIFT_MEMCACHED_PASSWORD
-
-client_result "Use the following env vars on your application to connect to memcached:"
-client_result " OPENSHIFT_MEMCACHED_HOST, OPENSHIFT_MEMCACHED_PORT and OPENSHIFT_MEMCACHED_URL"
-client_result " "
-client_result "To disable authentication, ssh into your memcached gear and set DISABLE_SASL=1 in memcached/conf/memcached.conf"
-client_result "Tip: $ rhc app show -a [APP] --gears  <== list ssh URLs for all your app gears"
-client_result " "
-client_result "Credentials are stored on the following env vars:"
-client_result " OPENSHIFT_MEMCACHED_USERNAME: $(< env/OPENSHIFT_MEMCACHED_USERNAME)"
-client_result " OPENSHIFT_MEMCACHED_PASSWORD: $(< env/OPENSHIFT_MEMCACHED_PASSWORD)"
+set_env_var OPENSHIFT_MEMCACHED_VERSION "$version" env
+set_env_var OPENSHIFT_MEMCACHED_PATH_ELEMENT "$OPENSHIFT_MEMCACHED_DIR/versions/$version/bin" env

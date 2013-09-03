@@ -35,7 +35,7 @@ function start() {
     then
         source $OPENSHIFT_MEMCACHED_DIR/conf/memcached.conf
         if [ "$DISABLE_SASL" != "1" ]; then
-            export MEMCACHED_SASL_PWDB=$OPENSHIFT_DATA_DIR/.memcached/sasldb
+            export MEMCACHED_SASL_PWDB=$OPENSHIFT_DATA_DIR/conf/sasldb
             OPTIONS="$OPTIONS -S"
         fi
         memcached -d -p $OPENSHIFT_MEMCACHED_PORT -U 0 -l ${OPENSHIFT_MEMCACHED_HOST} -u `id -u` -m $CACHESIZE -c $MAXCONN -P ${OPENSHIFT_MEMCACHED_DIR}/pid/memcached.pid $OPTIONS 2>&1
