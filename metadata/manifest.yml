@@ -4,8 +4,8 @@ Cartridge-Short-Name: MEMCACHED
 Architecture: noarch
 Display-Name: Memcached Distributed Memory Object Caching System
 Description: "Memcached is an in-memory key-value store for small chunks of arbitrary data (strings, objects) from results of database calls, API calls, or page rendering."
-Version: '1.4'
-Versions: [1.4]
+Version: '1.4.15'
+Versions: ['1.4.15']
 Cartridge-Version: 0.2.0
 Cartridge-Vendor: brianredbeard
 License: ASL 2.0
