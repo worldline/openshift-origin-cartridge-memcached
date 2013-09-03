@@ -19,6 +19,9 @@ function isrunning() {
 function _wait_for_memcached_to_startup() {
     for ((i=0; i<20; i++)); do
         if [ -f ${OPENSHIFT_MEMCACHED_DIR}/pid/memcached.pid ]; then
+            if [ "$DISABLE_SASL" == "1" ]; then
+                return
+            fi
             if memcached-tool $OPENSHIFT_MEMCACHED_HOST:$OPENSHIFT_MEMCACHED_PORT &>/dev/null; then
                 return
             fi
