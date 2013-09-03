@@ -16,19 +16,10 @@ function isrunning() {
      return 1
 }
 
-function _is_memcached_responding()
-{
-    exec 99<>/dev/tcp/$OPENSHIFT_MEMCACHED_HOST/$OPENSHIFT_MEMCACHED_PORT || return 1
-    echo version >&99
-    read -t 0.1 a b <&99
-    exec 99<&-
-    test "$a" == "VERSION"
-}
-
 function _wait_for_memcached_to_startup() {
     for ((i=0; i<20; i++)); do
         if [ -f ${OPENSHIFT_MEMCACHED_DIR}/pid/memcached.pid ]; then
-            if _is_memcached_responding; then
+            if memcached-tool $OPENSHIFT_MEMCACHED_HOST:$OPENSHIFT_MEMCACHED_PORT &>/dev/null; then
                 return
             fi
         fi
