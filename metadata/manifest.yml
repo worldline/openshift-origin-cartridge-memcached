@@ -32,10 +32,15 @@ Provides:
   - memcached-basic-mode
 Publishes:
   publish-db-connection-info:
-    Type: "ENV:NET_TCP:db:connection-info"
+    Type: "ENV:NET_TCP:db:memcached:connection-info"
+  publish-memcached-add-cluster:
+    Type: "ENV:NET_TCP:db:memcached:add-cluster"
+Subscribes:
+  set-memcached-add-cluster:
+    Type: "ENV:NET_TCP:db:memcached:add-cluster"
 Scaling:
   Min: 1
-  Max: 1
+  Max: -1
 Endpoints:
   - Private-IP-Name:   HOST
     Private-Port-Name: PORT

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+echo hook-set: `date` $* >> $OPENSHIFT_DATA_DIR/hook
+
+#!/usr/bin/env python
+#import sys
+#import os
+#
+#gear_name, namespace, gear_uuid = sys.argv[0:3]
+#my_gear_uuid = os.environ['OPENSHIFT_GEAR_UUID']
+#
+#for i in sys.argv[3].split(';'):
+#	pass
