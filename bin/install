@@ -8,6 +8,7 @@ password=$(generate_password)
 
 set_env_var OPENSHIFT_MEMCACHED_USERNAME "$username" env
 set_env_var OPENSHIFT_MEMCACHED_PASSWORD "$password" env
+set_env_var OPENSHIFT_MEMCACHED_URL "memcached://$username:$password@$OPENSHIFT_MEMCACHED_HOST:$OPENSHIFT_MEMCACHED_PORT" env
 
 # Memcached uses a plain text "username:password" database file
 echo "$username:$password" > $OPENSHIFT_MEMCACHED_DIR/conf/sasldb
