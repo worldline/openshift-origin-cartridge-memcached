@@ -32,7 +32,7 @@ Provides:
   - memcached-basic-mode
 Publishes:
   publish-db-connection-info:
-    Type: "ENV:NET_TCP:db:memcached:connection-info"
+    Type: "ENV:NET_TCP:db:connection-info"
   publish-memcached-add-cluster:
     Type: "ENV:NET_TCP:db:memcached:add-cluster"
 Subscribes:
