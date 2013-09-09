@@ -1,16 +1,6 @@
 #!/bin/bash
 
-{
-echo hook-set: `date`
-for ((i=0;$#>0;i++)); do
-	echo " $i: $1"
-	shift
-done
-} >> $OPENSHIFT_DATA_DIR/hook-set
-
-exit
-
-cat <<EOF
+exec /usr/bin/python <<EOF
 import sys
 import os
 
