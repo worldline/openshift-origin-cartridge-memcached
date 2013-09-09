@@ -2,7 +2,10 @@
 
 {
 echo hook-set: `date`
-echo " $*"
+for ((i=0;i<$#;i++)); do
+	echo " $i: $1"
+	shift
+done
 } >> $OPENSHIFT_DATA_DIR/hook-set
 
 #!/usr/bin/env python
