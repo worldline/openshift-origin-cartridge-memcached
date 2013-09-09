@@ -1,5 +1,16 @@
-#!/usr/bin/env python
+#!/bin/bash
 
+{
+echo hook-set: `date`
+for ((i=0;$#>0;i++)); do
+	echo " $i: $1"
+	shift
+done
+} >> $OPENSHIFT_DATA_DIR/hook-set
+
+exit
+
+cat <<EOF
 import sys
 import os
 
@@ -43,3 +54,4 @@ for name in [ 'HOST', 'PORT', 'USERNAME', 'PASSWORD']:
 		values.append(conn_info[name])
 	print 'ENV_VAR_ADD: OPENSHIFT_MEMCACHED_CLUSTER_%s=%s' % (name, ','.join(values))
 	print >>log, ' ENV_VAR_ADD: OPENSHIFT_MEMCACHED_CLUSTER_%s=%s' % (name, ','.join(values))
+EOF
