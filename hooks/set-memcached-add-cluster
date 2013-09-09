@@ -1,11 +1,10 @@
-#!/bin/bash
+#!/usr/bin/python
 
-exec /usr/bin/python <<EOF
 import sys
 import os
 
 import datetime
-log = open(os.environ['OPENSHIFT_DATA_DIR'] + '/hook-sub')
+log = open(os.environ['OPENSHIFT_DATA_DIR'] + '/hook-sub', 'w')
 print >>log, 'hook-sub: %s' % datetime.datetime.utcnow()
 for i, j in enumerate(sys.argv):
 	print >>log, ' %i: %s' % (i, j)
@@ -44,4 +43,3 @@ for name in [ 'HOST', 'PORT', 'USERNAME', 'PASSWORD']:
 		values.append(conn_info[name])
 	print 'ENV_VAR_ADD: OPENSHIFT_MEMCACHED_CLUSTER_%s=%s' % (name, ','.join(values))
 	print >>log, ' ENV_VAR_ADD: OPENSHIFT_MEMCACHED_CLUSTER_%s=%s' % (name, ','.join(values))
-EOF
