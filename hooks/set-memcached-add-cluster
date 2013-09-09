@@ -3,7 +3,13 @@
 import sys
 import os
 
-if len(sys.argv) < 3:
+import datetime
+log = open(os.environ['OPENSHIFT_DATA_DIR'] + '/hook-sub')
+print >>log, 'hook-sub: %s' % datetime.datetime.utcnow()
+for i, j in enumerate(sys.argv):
+	print >>log, ' %i: %s' % (i, j)
+
+if len(sys.argv) < 4:
 	sys.exit(0)
 
 # current gear uuid
@@ -24,6 +30,8 @@ for item in sys.argv[3].split():
 	conn_info['gear'] = k[1:-1]
 	mc.append(conn_info)
 
+print >>log, '', mc
+
 # if we are not running from the first gear, give up
 if gear != mc[0]['gear']:
 	sys.exit(0)
@@ -34,3 +42,4 @@ for name in [ 'HOST', 'PORT', 'USERNAME', 'PASSWORD']:
 	for conn_info in mc:
 		values.append(conn_info[name])
 	print 'ENV_VAR_ADD: OPENSHIFT_MEMCACHED_CLUSTER_%s=%s' % (name, ','.join(values))
+	print >>log, ' ENV_VAR_ADD: OPENSHIFT_MEMCACHED_CLUSTER_%s=%s' % (name, ','.join(values))
