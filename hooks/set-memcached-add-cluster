@@ -1,19 +1,36 @@
-#!/bin/bash
-
-{
-echo hook-set: `date`
-for ((i=0;$#>0;i++)); do
-	echo " $i: $1"
-	shift
-done
-} >> $OPENSHIFT_DATA_DIR/hook-set
-
 #!/usr/bin/env python
-#import sys
-#import os
-#
-#gear_name, namespace, gear_uuid = sys.argv[0:3]
-#my_gear_uuid = os.environ['OPENSHIFT_GEAR_UUID']
-#
-#for i in sys.argv[3].split(';'):
-#	pass
+
+import sys
+import os
+
+if len(sys.argv) < 3:
+	sys.exit(0)
+
+# current gear uuid
+gear = sys.argv[1]
+
+def to_dict(var_list):
+	'''Create {key:value} from ';'-separated key=value string.
+	Input:  'name1=value1;name2=value2;...'
+	Output: { 'name1': value1, 'name2': value2, ... }
+	'''
+	return dict([ tuple(var.split('=', 1)) for var in var_list.split(';') if var ])
+
+# parse gear message from publish-memcached-add-cluster
+mc = []
+for item in sys.argv[3].split():
+	k, v = item.split('=', 1)
+	conn_info = to_dict(v[1:-1])
+	conn_info['gear'] = k[1:-1]
+	mc.append(conn_info)
+
+# if we are not running from the first gear, give up
+if gear != mc[0]['gear']:
+	sys.exit(0)
+
+# Expose memcached connection values
+for name in [ 'HOST', 'PORT', 'USERNAME', 'PASSWORD']:
+	values = []
+	for conn_info in mc:
+		values.append(conn_info[name])
+	print 'ENV_VAR_ADD: OPENSHIFT_MEMCACHED_CLUSTER_%s=%s' % (name, ','.join(values))
