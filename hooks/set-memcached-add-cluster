@@ -2,7 +2,7 @@
 
 {
 echo hook-set: `date`
-for ((i=0;i<$#;i++)); do
+for ((i=0;$#>0;i++)); do
 	echo " $i: $1"
 	shift
 done
