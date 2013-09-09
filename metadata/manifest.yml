@@ -33,6 +33,8 @@ Provides:
 Publishes:
   publish-db-connection-info:
     Type: "ENV:NET_TCP:db:connection-info"
+  set-memcached-env:
+    Type: "ENV:set-memcached-env"
 Scaling:
   Min: 1
   Max: -1
