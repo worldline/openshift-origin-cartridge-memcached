@@ -13,6 +13,7 @@ Vendor: Memcached
 Categories:
   - service
   - database
+  - nosql
   - embedded
 Website: http://www.memcached.org
 Help-Topics:
@@ -34,7 +35,9 @@ Publishes:
   publish-db-connection-info:
     Type: "ENV:NET_TCP:db:connection-info"
   set-memcached-env:
-    Type: "ENV:set-env"
+    Type: "ENV:NET_TCP:nosqldb:set-env"
+  set-memcached-env:
+    Type: "ENV:nosqldb:memcached:set-env"
 Scaling:
   Min: 1
   Max: -1
