@@ -12,6 +12,12 @@ set_env_var OPENSHIFT_MEMCACHED_PASSWORD "$password" env
 # Memcached uses a plain text "username:password" database file
 echo "$username:$password" > $OPENSHIFT_MEMCACHED_DIR/conf/sasldb
 
+# cluster member connection info
+set_env_var OPENSHIFT_MEMCACHED_HOST_$OPENSHIFT_GEAR_UUID $OPENSHIFT_GEAR_DNS env
+set_env_var OPENSHIFT_MEMCACHED_PORT_$OPENSHIFT_GEAR_UUID $OPENSHIFT_MEMCACHED_PORT env
+set_env_var OPENSHIFT_MEMCACHED_USERNAME_$OPENSHIFT_GEAR_UUID $OPENSHIFT_MEMCACHED_USERNAME env
+set_env_var OPENSHIFT_MEMCACHED_PASSWORD_$OPENSHIFT_GEAR_UUID $OPENSHIFT_MEMCACHED_PASSWORD env
+
 client_result ' '
 client_result 'Use the following env vars on your application to connect to memcached:'
 client_result ' OPENSHIFT_MEMCACHED_HOST'
