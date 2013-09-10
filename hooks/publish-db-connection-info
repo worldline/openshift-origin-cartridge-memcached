@@ -1,48 +1,6 @@
-#!/usr/bin/env python
+#!/bin/bash
 
-import os, sys
-
-HOST      = os.environ['OPENSHIFT_GEAR_DNS']
-PORT      = os.environ['OPENSHIFT_MEMCACHED_PROXY_PORT']
-USERNAME  = os.environ['OPENSHIFT_MEMCACHED_USERNAME']
-PASSWORD  = os.environ['OPENSHIFT_MEMCACHED_PASSWORD']
-#GEAR_UUID = os.environ['OPENSHIFT_GEAR_UUID']
-
-print 'OPENSHIFT_MEMCACHED_HOST=%s' % HOST
-print 'OPENSHIFT_MEMCACHED_PORT=%s' % PORT
-print 'OPENSHIFT_MEMCACHED_USERNAME=%s' % USERNAME
-print 'OPENSHIFT_MEMCACHED_PASSWORD=%s' % PASSWORD
-
-#print 'OPENSHIFT_MEMCACHED_HOST_%s=%s' % (GEAR_UUID, HOST)
-#print 'OPENSHIFT_MEMCACHED_PORT_%s=%s' % (GEAR_UUID, PORT)
-#print 'OPENSHIFT_MEMCACHED_USERNAME_%s=%s' % (GEAR_UUID, USERNAME)
-#print 'OPENSHIFT_MEMCACHED_PASSWORD_%s=%s' % (GEAR_UUID, PASSWORD)
-
-sys.exit(0)
-
-'''
-def str_to_list(name):
-	v = os.environ.get('OPENSHIFT_MEMCACHED_CLUSTER_%s' % name, '')
-	return v.split(',') if v else []
-
-hosts = str_to_list('HOST')
-
-if OPENSHIFT_MEMCACHED_HOST in hosts:
-	sys.exit(0)
-
-ports     = str_to_list('PORT')
-usernames = str_to_list('USERNAME')
-passwords = str_to_list('PASSWORD')
-
-assert len(hosts) == len(ports) == len(usernames) == len(passwords)
-
-hosts.append(OPENSHIFT_MEMCACHED_HOST)
-ports.append(OPENSHIFT_MEMCACHED_PORT)
-usernames.append(OPENSHIFT_MEMCACHED_USERNAME)
-passwords.append(OPENSHIFT_MEMCACHED_PASSWORD)
-
-print 'OPENSHIFT_MEMCACHED_CLUSTER_HOST=%s' % ','.join(hosts)
-print 'OPENSHIFT_MEMCACHED_CLUSTER_PORT=%s' % ','.join(ports)
-print 'OPENSHIFT_MEMCACHED_CLUSTER_USERNAME=%s' % ','.join(usernames)
-print 'OPENSHIFT_MEMCACHED_CLUSTER_PASSWORD=%s' % ','.join(passwords)
-'''
+echo "ENV_VAR_ADD: OPENSHIFT_MEMCACHED_HOST=$OPENSHIFT_GEAR_DNS"
+echo "ENV_VAR_ADD: OPENSHIFT_MEMCACHED_PORT=$OPENSHIFT_MEMCACHED_PORT"
+echo "ENV_VAR_ADD: OPENSHIFT_MEMCACHED_USERNAME=$OPENSHIFT_MEMCACHED_USERNAME"
+echo "ENV_VAR_ADD: OPENSHIFT_MEMCACHED_PASSWORD=$OPENSHIFT_MEMCACHED_PASSWORD"
