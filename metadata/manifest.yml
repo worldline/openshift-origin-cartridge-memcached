@@ -22,7 +22,7 @@ Cart-Data:
   - Key: OPENSHIFT_MEMCAHCHED_PORT
     Type: cart_data
     Description: Memcached port
-  - Key: OPENSHIFT_MEMCAHCHED_URL
+  - Key: OPENSHIFT_MEMCAHCHED_HOST
     Type: cart_data
     Description: Memcached connection URL
 Suggests:
