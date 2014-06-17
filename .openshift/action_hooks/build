@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Build Begin"
+echo "Build Begin" >> /tmp/tmp.log
 set +e
 rm -rf tmp/memcached
 mkdir tmp

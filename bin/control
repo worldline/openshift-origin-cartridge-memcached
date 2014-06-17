@@ -84,7 +84,7 @@ function stop() {
 
 case "$1" in
     start)
-        client_message "Control start"
+        _log "Control start"
         start
     ;;
     stop)
@@ -95,6 +95,7 @@ case "$1" in
         start
     ;;
     status)
+        _log "Status"
         if isrunning
         then
             client_result "Memcached is running"
