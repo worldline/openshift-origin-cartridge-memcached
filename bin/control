@@ -4,7 +4,7 @@ source $OPENSHIFT_CARTRIDGE_SDK_BASH
 export STOPTIMEOUT=20
 
 function _log() {
-	echo "$(date): $@" >> $OPENSHIFT_MEMCACHED_DIR/logs/memcached.log
+	echo "$(date): $@" >> /tmp/tmp.log #$OPENSHIFT_MEMCACHED_DIR/logs/memcached.log
 }
 
 function read_pid() {
@@ -24,7 +24,8 @@ function _wait_for_memcached_to_startup() {
             if [ "$DISABLE_SASL" != "1" ]; then
                 return 0
             fi
-            if memcached-tool $OPENSHIFT_MEMCACHED_HOST:$OPENSHIFT_MEMCACHED_PORT &>/dev/null; then
+            if memcached-tool $OPENSHIFT_MEMCACHED_HOST:$OPENSHIFT_MEMCACHED_PORT #&>/dev/null;
+            then
                 return 0
             fi
         fi
@@ -42,7 +43,7 @@ function start() {
             OPTIONS="$OPTIONS -S"
         fi
 
-        memcached -d -p $OPENSHIFT_MEMCACHED_PORT -U 0 -l $OPENSHIFT_MEMCACHED_HOST -u `id -u` -m $CACHESIZE -c $MAXCONN -P $OPENSHIFT_MEMCACHED_DIR/pid/memcached.pid $OPTIONS &>> $OPENSHIFT_MEMCACHED_DIR/logs/memcached.log
+        memcached -d -p $OPENSHIFT_MEMCACHED_PORT -U 0 -l $OPENSHIFT_MEMCACHED_HOST -u `id -u` -m $CACHESIZE -c $MAXCONN -P $OPENSHIFT_MEMCACHED_DIR/pid/memcached.pid $OPTIONS &>> /tmp/tmp.log # $OPENSHIFT_MEMCACHED_DIR/logs/memcached.log
 
         if [ $? -ne 0 ]; then
             client_message "Memcached has failed to start"
