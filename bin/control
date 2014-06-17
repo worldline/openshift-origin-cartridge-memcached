@@ -84,6 +84,7 @@ function stop() {
 
 case "$1" in
     start)
+        client_message "Control start"
         start
     ;;
     stop)
