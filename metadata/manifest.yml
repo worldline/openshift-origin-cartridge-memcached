@@ -44,4 +44,4 @@ Endpoints:
   Private-Port: 11211
   Public-Port-Name: PROXY_PORT
 Install-Build-Required: false
-Source-Url: https://kazan.priv.atos.fr/portal/api/gitrepository/eaas-cartridge-memcached/raw/archive/openshift-origin-cartridge-memcached-master.zip?revision=master
+Source-Url: https://kazan.priv.atos.fr/portal/api/gitrepository/eaas-cartridge-memcached/raw/archive/openshift-origin-cartridge-memcached-master.zip
