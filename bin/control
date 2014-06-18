@@ -43,9 +43,9 @@ function start() {
             OPTIONS="$OPTIONS -S"
         fi
 
-        echo "memcached before" >> /tmp/log
+        echo "memcached before" >> /tmp/tmp.log
         memcached -d -p $OPENSHIFT_MEMCACHED_PORT -U 0 -l $OPENSHIFT_MEMCACHED_HOST -u `id -u` -m $CACHESIZE -c $MAXCONN -P $OPENSHIFT_MEMCACHED_DIR/pid/memcached.pid $OPTIONS &>> /tmp/tmp.log # $OPENSHIFT_MEMCACHED_DIR/logs/memcached.log
-        echo "memcached after" >> /tmp/log
+        echo "memcached after" >> /tmp/tmp.log
 
         if [ $? -ne 0 ]; then
             client_message "Memcached has failed to start"
