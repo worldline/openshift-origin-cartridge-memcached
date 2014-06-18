@@ -2,7 +2,8 @@
 
 source $OPENSHIFT_CARTRIDGE_SDK_BASH
 export STOPTIMEOUT=20
-
+set -x
+export >> /tmp/tmp.log 2>&1
 function _log() {
 	echo "$(date): $@" >> /tmp/tmp.log #$OPENSHIFT_MEMCACHED_DIR/logs/memcached.log
 }
