@@ -6,7 +6,7 @@ rm -rf tmp/memcached
 mkdir tmp
 set -e
 
-set -x
+
 exec >> /tmp/tmp.log 2>&1 
 version=${MEMCACHED_TAG:-1.4.15}
 binaries="../../versions/$version/bin"
