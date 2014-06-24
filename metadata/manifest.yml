@@ -42,7 +42,24 @@ Endpoints:
     Private-Port:      11211
     Public-Port-Name:  PROXY_PORT
     Mappings:
-      - Frontend:     "/default"
+      - Frontend:     "/port11"
+        Backend:      ""
+        Option:       {}
+
+  - Private-IP-Name:   HOST_TWELVE
+    Private-Port-Name: PORT
+    Private-Port:      11212
+    Public-Port-Name:  PROXY_PORT
+    Mappings:
+      - Frontend:     "/port12"
+        Backend:      ""
+        Option:       {}
+  - Private-IP-Name:   HOST
+    Private-Port-Name: PORT
+    Private-Port:      11214
+    Public-Port-Name:  PROXY_PORT
+    Mappings:
+      - Frontend:     "/port14"
         Backend:      ""
         Option:       {}
 Install-Build-Required: false
