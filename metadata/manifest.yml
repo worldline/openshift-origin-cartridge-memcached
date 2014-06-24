@@ -41,4 +41,8 @@ Endpoints:
     Private-Port-Name: PORT
     Private-Port:      11211
     Public-Port-Name:  PROXY_PORT
+    Mappings:
+      - Frontend:     "/default"
+        Backend:      ""
+        Option:       {}
 Install-Build-Required: false
