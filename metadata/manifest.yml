@@ -13,7 +13,6 @@ Vendor: Memcached
 Categories:
   - service
   - database
-  - embedded
   - web_framework
 Website: http://www.memcached.org
 Help-Topics:
