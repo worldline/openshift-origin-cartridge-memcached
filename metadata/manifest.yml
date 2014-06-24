@@ -14,6 +14,7 @@ Categories:
   - service
   - database
   - embedded
+  - web_framework
 Website: http://www.memcached.org
 Help-Topics:
   - "Building with Memcached" : https://www.openshift.com/developers/memcached
