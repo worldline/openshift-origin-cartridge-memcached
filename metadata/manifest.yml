@@ -46,18 +46,18 @@ Endpoints:
         Backend:      ""
         Option:       {}
 
-  - Private-IP-Name:   HOST_TWELVE
-    Private-Port-Name: PORT
+  - Private-IP-Name:   HOST_12
+    Private-Port-Name: PORT12
     Private-Port:      11212
-    Public-Port-Name:  PROXY_PORT
+    Public-Port-Name:  PROXY_PORT12
     Mappings:
       - Frontend:     "/port12"
         Backend:      ""
         Option:       {}
-  - Private-IP-Name:   HOST
-    Private-Port-Name: PORT
+  - Private-IP-Name:   HOST_14
+    Private-Port-Name: PORT14
     Private-Port:      11214
-    Public-Port-Name:  PROXY_PORT
+    Public-Port-Name:  PROXY_PORT14
     Mappings:
       - Frontend:     "/port14"
         Backend:      ""
