@@ -37,19 +37,25 @@ Scaling:
   Min: 1
   Max: 1
 Endpoints:
-  - Private-IP-Name:   IP
+  - Private-IP-Name:   HOST
     Private-Port-Name: PORT
     Private-Port:      11211
     Public-Port-Name:  PROXY_PORT
     Mappings:
-      - Frontend:      'port1'
-        Backend:       ''
-
-  - Private-IP-Name:   IP
-    Private-Port-Name: PORT2
+      - Frontend:     "/port11"
+        Backend:      "/port11_back"
+  - Private-IP-Name:   HOST
+    Private-Port-Name: PORT12
     Private-Port:      11212
-    Public-Port-Name:  PROXY_PORT2
+    Public-Port-Name:  PROXY_PORT12
     Mappings:
-      - Frontend:      'port2'
-        Backend:       ''
+      - Frontend:     "/port12"
+        Backend:      "/port12_back"
+  - Private-IP-Name:   HOST
+    Private-Port-Name: PORT14
+    Private-Port:      11214
+    Public-Port-Name:  PROXY_PORT14
+    Mappings:
+      - Frontend:     "/port14"
+        Backend:      "/port14_back"
 Install-Build-Required: false
