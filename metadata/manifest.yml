@@ -39,7 +39,7 @@ Scaling:
 Endpoints:
   - Private-IP-Name:   HOST
     Private-Port-Name: PORT
-    Private-Port:      11211
+    Private-Port:      11212
     Public-Port-Name:  PROXY_PORT
     Mappings:
       - Frontend:     "/port11"
@@ -48,7 +48,7 @@ Endpoints:
 
   - Private-IP-Name:   HOST
     Private-Port-Name: PORT12
-    Private-Port:      11212
+    Private-Port:      11211
     Public-Port-Name:  PROXY_PORT12
     Mappings:
       - Frontend:     "/port12"
