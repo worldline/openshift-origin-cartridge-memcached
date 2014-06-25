@@ -45,16 +45,16 @@ Endpoints:
       - Frontend:     "/port11"
         Backend:      ""
   - Private-IP-Name:   HOST
-    Private-Port-Name: PORT12
+    Private-Port-Name: PORTT
     Private-Port:      11212
-    Public-Port-Name:  PROXY_PORT12
+    Public-Port-Name:  PROXY_PORTT
     Mappings:
       - Frontend:     "/port12"
         Backend:      ""
   - Private-IP-Name:   HOST
-    Private-Port-Name: PORT14
+    Private-Port-Name: PORTTT
     Private-Port:      11214
-    Public-Port-Name:  PROXY_PORT14
+    Public-Port-Name:  PROXY_PORTTT
     Mappings:
       - Frontend:     "/port14"
         Backend:      ""
