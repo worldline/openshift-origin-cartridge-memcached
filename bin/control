@@ -10,7 +10,7 @@ function _log() {
 
 function read_pid() {
     if [ -f $OPENSHIFT_MEMCACHED_DIR/pid/memcached.pid ]; then
-        echo $(<$OPENSHIFT_MEMCACHED_DIR/pid/memcached.pid)
+        echo $(<$OPENSHIFT_MEMCACHED_DIR/pid/memcached1.pid)
     fi
 }
 
@@ -21,7 +21,7 @@ function isrunning() {
 
 function _wait_for_memcached_to_startup() {
     for ((i=0; i<20; i++)); do
-        if [ -f ${OPENSHIFT_MEMCACHED_DIR}/pid/memcached.pid ]; then
+        if [ -f ${OPENSHIFT_MEMCACHED_DIR}/pid/memcached1.pid ]; then
             if [ "$DISABLE_SASL" != "1" ]; then
                 return 0
             fi
@@ -44,9 +44,11 @@ function start() {
             OPTIONS="$OPTIONS -S"
         fi
 
-        echo "memcached before" >> /tmp/tmp.log
-        memcached -d -p $OPENSHIFT_MEMCACHED_PORT -U 0 -l $OPENSHIFT_MEMCACHED_HOST -u `id -u` -m $CACHESIZE -c $MAXCONN -P $OPENSHIFT_MEMCACHED_DIR/pid/memcached.pid $OPTIONS &>> /tmp/tmp.log # $OPENSHIFT_MEMCACHED_DIR/logs/memcached.log
-        echo "memcached after" >> /tmp/tmp.log
+
+        memcached -d -p $OPENSHIFT_MEMCACHED_PORT1 -U 0 -l $OPENSHIFT_MEMCACHED_HOST -u `id -u` -m $CACHESIZE -c $MAXCONN -P $OPENSHIFT_MEMCACHED_DIR/pid/memcached1.pid $OPTIONS &>>  $OPENSHIFT_MEMCACHED_DIR/logs/memcached.log
+        memcached -d -p $OPENSHIFT_MEMCACHED_PORT2 -U 0 -l $OPENSHIFT_MEMCACHED_HOST -u `id -u` -m $CACHESIZE -c $MAXCONN -P $OPENSHIFT_MEMCACHED_DIR/pid/memcached2.pid $OPTIONS &>>  $OPENSHIFT_MEMCACHED_DIR/logs/memcached.log
+        memcached -d -p $OPENSHIFT_MEMCACHED_PORT3 -U 0 -l $OPENSHIFT_MEMCACHED_HOST -u `id -u` -m $CACHESIZE -c $MAXCONN -P $OPENSHIFT_MEMCACHED_DIR/pid/memcached3.pid $OPTIONS &>>  $OPENSHIFT_MEMCACHED_DIR/logs/memcached.log
+
 
         if [ $? -ne 0 ]; then
             client_message "Memcached has failed to start"
@@ -67,7 +69,7 @@ function stop() {
     if [ -n "$pid" ]; then
         if kill "$pid" 2>/dev/null; then
             TIMEOUT="$STOPTIMEOUT"
-            while [ $TIMEOUT -gt 0 -a -f "$OPENSHIFT_MEMCACHED_DIR/pid/memcached.pid" ]; do
+            while [ $TIMEOUT -gt 0 -a -f "$OPENSHIFT_MEMCACHED_DIR/pid/memcached1.pid" ]; do
                 kill -0 "$pid" 2>/dev/null || break
                 sleep 1
                 let TIMEOUT=${TIMEOUT}-1
