@@ -38,9 +38,9 @@ Scaling:
   Max: 1
 Endpoints:
   - Private-IP-Name:   IP
-    Private-Port-Name: PORT1
+    Private-Port-Name: PORT
     Private-Port:      11211
-    Public-Port-Name:  PROXY_PORT1
+    Public-Port-Name:  PROXY_PORT
     Mappings:
       - Frontend:      "/port1"
         Backend:       "/"
