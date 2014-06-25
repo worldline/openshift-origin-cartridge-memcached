@@ -42,14 +42,14 @@ Endpoints:
     Private-Port:      11211
     Public-Port-Name:  PROXY_PORT
     Mappings:
-      - Frontend:      "/port1"
-        Backend:       
+      - Frontend:      'port1'
+        Backend:       ''
 
   - Private-IP-Name:   IP
     Private-Port-Name: PORT2
     Private-Port:      11212
     Public-Port-Name:  PROXY_PORT2
     Mappings:
-      - Frontend:      "/port2"
-      - Backend:       "/"
+      - Frontend:      'port2'
+        Backend:       ''
 Install-Build-Required: false
