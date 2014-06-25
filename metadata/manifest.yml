@@ -43,24 +43,19 @@ Endpoints:
     Public-Port-Name:  PROXY_PORT
     Mappings:
       - Frontend:     "/port11"
-        Backend:      
-        Options:       {}
-
+        Backend:      "/port11_back"
   - Private-IP-Name:   HOST
     Private-Port-Name: PORT12
     Private-Port:      11212
     Public-Port-Name:  PROXY_PORT12
     Mappings:
       - Frontend:     "/port12"
-        Backend:      
-        Options:      {}
-
+        Backend:      "/port12_back"
   - Private-IP-Name:   HOST
     Private-Port-Name: PORT14
     Private-Port:      11214
     Public-Port-Name:  PROXY_PORT14
     Mappings:
       - Frontend:     "/port14"
-        Backend:      
-        Options:       {}
+        Backend:      "/port14_back"
 Install-Build-Required: false
