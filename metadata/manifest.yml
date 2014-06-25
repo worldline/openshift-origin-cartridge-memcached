@@ -44,7 +44,7 @@ Endpoints:
     Mappings:
       - Frontend:     "/port11"
         Backend:      ""
-        Option:       {}
+        Options:       {}
 
   - Private-IP-Name:   HOST_12
     Private-Port-Name: PORT12
@@ -53,7 +53,8 @@ Endpoints:
     Mappings:
       - Frontend:     "/port12"
         Backend:      ""
-        Option:       {}
+        Options:       {}
+
   - Private-IP-Name:   HOST_14
     Private-Port-Name: PORT14
     Private-Port:      11214
@@ -61,5 +62,5 @@ Endpoints:
     Mappings:
       - Frontend:     "/port14"
         Backend:      ""
-        Option:       {}
+        Options:       {}
 Install-Build-Required: false
