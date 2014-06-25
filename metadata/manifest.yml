@@ -46,7 +46,7 @@ Endpoints:
         Backend:      ""
         Options:       {}
 
-  - Private-IP-Name:   HOST_12
+  - Private-IP-Name:   HOST
     Private-Port-Name: PORT12
     Private-Port:      11212
     Public-Port-Name:  PROXY_PORT12
@@ -55,7 +55,7 @@ Endpoints:
         Backend:      ""
         Options:       {}
 
-  - Private-IP-Name:   HOST_14
+  - Private-IP-Name:   HOST
     Private-Port-Name: PORT14
     Private-Port:      11214
     Public-Port-Name:  PROXY_PORT14
