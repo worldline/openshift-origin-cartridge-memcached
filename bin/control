@@ -45,9 +45,9 @@ function start() {
         fi
 
 
-        memcached -d -p $OPENSHIFT_MEMCACHED_PORT1 -U 0 -l $OPENSHIFT_MEMCACHED_HOST -u `id -u` -m $CACHESIZE -c $MAXCONN -P $OPENSHIFT_MEMCACHED_DIR/pid/memcached1.pid $OPTIONS -vv & >>  $OPENSHIFT_MEMCACHED_DIR/logs/memcached.log 2>&
-        memcached -d -p $OPENSHIFT_MEMCACHED_PORT2 -U 0 -l $OPENSHIFT_MEMCACHED_HOST -u `id -u` -m $CACHESIZE -c $MAXCONN -P $OPENSHIFT_MEMCACHED_DIR/pid/memcached2.pid $OPTIONS -vv & >>  $OPENSHIFT_MEMCACHED_DIR/logs/memcached.log 2>&
-        memcached -d -p $OPENSHIFT_MEMCACHED_PORT3 -U 0 -l $OPENSHIFT_MEMCACHED_HOST -u `id -u` -m $CACHESIZE -c $MAXCONN -P $OPENSHIFT_MEMCACHED_DIR/pid/memcached3.pid $OPTIONS -vv & >>  $OPENSHIFT_MEMCACHED_DIR/logs/memcached.log 2>&
+        memcached -d -p $OPENSHIFT_MEMCACHED_PORT1 -U 0 -l $OPENSHIFT_MEMCACHED_HOST -u `id -u` -m $CACHESIZE -c $MAXCONN -P $OPENSHIFT_MEMCACHED_DIR/pid/memcached1.pid $OPTIONS -vv & >>  $OPENSHIFT_MEMCACHED_DIR/logs/memcached.log 2>&1
+        memcached -d -p $OPENSHIFT_MEMCACHED_PORT2 -U 0 -l $OPENSHIFT_MEMCACHED_HOST -u `id -u` -m $CACHESIZE -c $MAXCONN -P $OPENSHIFT_MEMCACHED_DIR/pid/memcached2.pid $OPTIONS -vv & >>  $OPENSHIFT_MEMCACHED_DIR/logs/memcached.log 2>&1
+        memcached -d -p $OPENSHIFT_MEMCACHED_PORT3 -U 0 -l $OPENSHIFT_MEMCACHED_HOST -u `id -u` -m $CACHESIZE -c $MAXCONN -P $OPENSHIFT_MEMCACHED_DIR/pid/memcached3.pid $OPTIONS -vv & >>  $OPENSHIFT_MEMCACHED_DIR/logs/memcached.log 2>&1
 
 
         if [ $? -ne 0 ]; then
