@@ -2,6 +2,9 @@ MAXCONN="1024"
 CACHESIZE="64"
 OPTIONS=""
 
+logfile <% ENV['OPENSHIFT_MEMCACHED_DIR'] %>logs/memcached.log
+
+
 # Set DISABLE_SASL to 1 to disable sasl auth.
 # More info on memcached's SASL implementation here: https://code.google.com/p/memcached/wiki/SASLHowto
 #DISABLE_SASL="1"
