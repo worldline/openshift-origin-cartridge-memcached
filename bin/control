@@ -9,7 +9,7 @@ function _log() {
 }
 
 function read_pid() {
-    if [ -f $OPENSHIFT_MEMCACHED_DIR/pid/memcached.pid ]; then
+    if [ -f $OPENSHIFT_MEMCACHED_DIR/pid/memcached1.pid ]; then
         echo $(<$OPENSHIFT_MEMCACHED_DIR/pid/memcached1.pid)
     fi
 }
@@ -74,10 +74,23 @@ function stop() {
                 sleep 1
                 let TIMEOUT=${TIMEOUT}-1
             done
-            /bin/rm -f $OPENSHIFT_MEMCACHED_DIR/pid/memcached.pid
+            /bin/rm -f $OPENSHIFT_MEMCACHED_DIR/pid/memcached1.pid
+            while [ $TIMEOUT -gt 0 -a -f "$OPENSHIFT_MEMCACHED_DIR/pid/memcached2.pid" ]; do
+                kill -0 "$pid" 2>/dev/null || break
+                sleep 1
+                let TIMEOUT=${TIMEOUT}-1
+            done
+            /bin/rm -f $OPENSHIFT_MEMCACHED_DIR/pid/memcached1.pid
+            while [ $TIMEOUT -gt 0 -a -f "$OPENSHIFT_MEMCACHED_DIR/pid/memcached3.pid" ]; do
+                kill -0 "$pid" 2>/dev/null || break
+                sleep 1
+                let TIMEOUT=${TIMEOUT}-1
+            done
+            /bin/rm -f $OPENSHIFT_MEMCACHED_DIR/pid/memcached1.pid
             _log "Memcached stopped"
         fi
     else
+        killall memcached
         if `pgrep -x memcached >/dev/null 2>&1`
         then
             client_message "Memcached process exists without a pid file. Use force-stop to kill."
