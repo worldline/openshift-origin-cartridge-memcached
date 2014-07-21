@@ -40,7 +40,6 @@ Provides memcached cartridge support to OpenShift
 %attr(0755,-,-) %{cartridgedir}/conf/
 %attr(0755,-,-) %{cartridgedir}/hooks/
 %attr(0755,-,-) %{cartridgedir}/metadata/
-%attr(0755,-,-) %{cartridgedir}/versions/
 %doc %{cartridgedir}/README.md
 %doc %{cartridgedir}/COPYRIGHT
 %doc %{cartridgedir}/LICENSE
