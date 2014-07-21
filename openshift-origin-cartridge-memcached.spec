@@ -2,7 +2,7 @@
 
 Summary:       Embedded memcached support for OpenShift
 Name:          openshift-origin-cartridge-memcached
-Version:       1.2
+Version:       1.3
 Release:       1%{?dist}
 Group:         Network/Daemons
 License:       ASL 2.0
@@ -43,6 +43,9 @@ Provides memcached cartridge support to OpenShift
 %doc %{cartridgedir}/LICENSE
 
 %changelog
+* Mon Jul 21 2014 Nicolas MESSIN <nicolas.messin@worldline.com> 1.3-1
+- new package built with tito
+
 * Mon Jul 21 2014 Nicolas MESSIN <nicolas.messin@worldline.com> 1.0.O
 - Creation of initial memcached cartridge 
 
